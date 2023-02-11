@@ -1,0 +1,43 @@
+name: Publisher Agent
+run-name: ${{ github.actor }} to CSV Data Sender
+on: [push]
+
+jobs:
+  build-csv-data-sender:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: ./Dockerfile
+            image: sflorenz05/publisher-agent
+            context: ./
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          username: sflorenz05
+          password: ${{ secrets.PUBLISHER_AGENT_DOCKER_HUB }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ matrix.image }}
+      - name: Build and push Docker Agent image
+        env:
+          CI: false
+        uses: docker/build-push-action@v3
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
