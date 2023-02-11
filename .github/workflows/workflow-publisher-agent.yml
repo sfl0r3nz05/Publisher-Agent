@@ -1,5 +1,5 @@
 name: Publisher Agent
-run-name: ${{ github.actor }} to CSV Data Sender
+run-name: ${{ github.actor }} to Publisher Agent
 on: [push]
 
 jobs:
