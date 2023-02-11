@@ -4,7 +4,7 @@ The publisher agent is responsible for organizing the positioning data (raw data
 
 ## Project status
 
-- The project is under development: 🛠 by sfl0r3nz05(sfigueroa@ceit.es)
+- The project is under development: 🛠 by [sfl0r3nz05](sfigueroa@ceit.es)
 
 ## Architecture
 
