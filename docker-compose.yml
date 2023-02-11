@@ -1,0 +1,18 @@
+version: "3.3"
+
+networks:
+   default:
+      external:
+         name: syntheticnet
+
+services:
+  publisher-agent:
+    container_name: publisher
+    hostname: publisher
+    build:
+      context: .
+    restart: always
+    environment:
+      - AMQP_QUEUE_HOST=rmq0
+    ports:
+      - 8053:8053
