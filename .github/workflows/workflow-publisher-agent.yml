@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} to CSV Data Sender
 on: [push]
 
 jobs:
-  build-csv-data-sender:
+  build-publisher-agent:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
