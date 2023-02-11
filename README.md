@@ -1,6 +1,6 @@
 # Publisher Agent
 
-The publisher agent is responsible for organizing the positioning data (raw data) received from a [SDG](https://github.com/sfl0r3nz05/CSV-Data-Sender) for a given identifier (e.g., tag) and sending it to the edge via AMQP or MQTT.
+The publisher agent is responsible for organizing the positioning data (raw data) received from a [SDG](https://github.com/sfl0r3nz05/CSV-Data-Sender) for a given identifier (e.g., tag) and sending it to the edge via AMQP.
 
 ## Project status
 
@@ -45,3 +45,10 @@ rmq0:
   cap_add:
     - ALL
 ```
+
+## To Do
+
+- Include the `MQTT` protocol in the agent
+- Add trivy vulnerability scanner to github workflow
+- Build a container as part of the github workflow
+- Push the container to Docker Hub registry
