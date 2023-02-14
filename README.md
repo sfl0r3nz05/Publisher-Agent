@@ -35,13 +35,13 @@ docker network create syntheticnet
     nano ~/publisher_agent/src/DataReceiver.js
     ```
 
-    - If use MQTT to comment:
+    - If use MQTT to comment the next line:
 
     ```bash
     import { connect, sendMessage } from './DataSenderAMQP.js'
     ```
 
-    - If use AMQP to comment:
+    - If use AMQP to comment the next line:
 
     ```bash
     import { connect, sendMessage } from './DataSenderMQTT.js'
