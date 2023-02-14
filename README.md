@@ -19,13 +19,35 @@ docker network create syntheticnet
 
 ## How to use
 
-1. Set the environment variables of the `docker-compose.yml` file:
+1. Set the environment variables of the `docker-compose.yml` file depending on the messaging technology:
 
     ```bash
     AMQP_QUEUE_HOST=rmq0
     ```
 
-2. To launch the program using docker simply place your terminal in the project folder and run the following command:
+    ```bash
+    MQTT_QUEUE_HOST=mosquitto
+    ```
+
+2. Comment on the DataSender library depending on the messaging technology:
+
+    ```bash
+    nano ~/publisher_agent/src/DataReceiver.js
+    ```
+
+    - If use MQTT to comment:
+
+    ```bash
+    import { connect, sendMessage } from './DataSenderAMQP.js'
+    ```
+
+    - If use AMQP to comment:
+
+    ```bash
+    import { connect, sendMessage } from './DataSenderMQTT.js'
+    ```
+
+3. To launch the program using docker simply place your terminal in the project folder and run the following command:
 
     ```bash
     docker-compose up
@@ -66,7 +88,7 @@ mosquitto:
 
 ## To Do
 
-- Include the `MQTT` protocol in the agent
+- Add a selector using environmental variables to select between different protocols
 - Add trivy vulnerability scanner to github workflow
 - Build a container as part of the github workflow
 - Push the container to Docker Hub registry

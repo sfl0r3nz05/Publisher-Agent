@@ -1,12 +1,10 @@
-import mqtt from 'paho-mqtt';
+import mqtt from 'mqtt';
 const MQTT_QUEUE_HOST = process.env.MQTT_QUEUE_HOST;
-const MQTT_QUEUE_PORT = process.env.MQTT_QUEUE_PORT;
 
 export async function connect() {
     try {
-    const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
-    const connectUrl = `mqtt://${MQTT_QUEUE_HOST}:${MQTT_QUEUE_PORT}`
-    const client = await mqtt.connect(connectUrl, {clientId,clean: true,connectTimeout: 4000,reconnectPeriod: 1000,})
+    const connectUrl = `mqtt://${MQTT_QUEUE_HOST}`
+    const client = mqtt.connect(connectUrl)
     return client
     } catch (error) {
         return null

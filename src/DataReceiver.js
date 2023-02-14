@@ -24,6 +24,7 @@ server.on("listening", async function () {
 
 server.on("message", async function (msg) {
   let data = getDataObject(msg.toString())
+  console.log("First data" + data);
   let f;
 
   if (!tags.includes(data.tagID)) {
@@ -41,6 +42,7 @@ server.on("message", async function (msg) {
   }
   else {
     channel = await connect();
+    console.log("channel " + channel);
     if (channel != null) {
       sendMessage(channel, data.tagID, data)
     }
