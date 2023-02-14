@@ -14,5 +14,7 @@ services:
     restart: always
     environment:
       - AMQP_QUEUE_HOST=rmq0
+      - MQTT_QUEUE_HOST=mosquitto
+      - MQTT_QUEUE_PORT=1883
     ports:
       - 8053:8053

@@ -31,7 +31,7 @@ docker network create syntheticnet
     docker-compose up
     ```
 
-## Test the publisher agent
+## Test the publisher agent for amqp
 
 For test purpose adding the next service to `docker-compose.yml` file.
 
@@ -44,6 +44,24 @@ rmq0:
     - 15672:15672
   cap_add:
     - ALL
+```
+
+## Test the publisher agent for mqtt
+
+For test purpose adding the next service to `docker-compose.yml` file.
+
+```bash
+mosquitto:
+  image: eclipse-mosquitto:1.6.14
+  hostname: mosquitto
+  expose:
+    - "1883"
+    - "9001"
+  ports:
+    - "1883:1883"
+    - "9001:9001"
+  volumes:
+    - ./test/mosquitto.conf:/mosquitto/config/mosquitto.conf
 ```
 
 ## To Do

@@ -1,7 +1,8 @@
 import dgram from "dgram";
 import client from 'prom-client'
 import DataGui from './models/DataGui.js';
-import { connect, sendMessage } from './DataSender.js'
+import { connect, sendMessage } from './DataSenderAMQP.js'
+import { connect, sendMessage } from './DataSenderMQTT.js'
 
 let s_port = 8053;
 const recieving_timeout = 250
@@ -44,7 +45,6 @@ server.on("message", async function (msg) {
       sendMessage(channel, data.tagID, data)
     }
   }
-
 });
 
 async function timer(f) {

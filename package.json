@@ -13,6 +13,7 @@
   "dependencies": {
     "prom-client": "14.0.1",
     "amqplib": "^0.8.0",
-    "dgram": "^1.0.1"
+    "dgram": "^1.0.1",
+    "paho-mqtt": "^1.1.0"
   }
 }
