@@ -88,7 +88,7 @@ mosquitto:
 
 ## To Do
 
-- Add a selector using environmental variables to select between different protocols
+- Add a selector using environmental variables to select between different protocols [Step 2 - How to use](README.md#how-to-use)
 - Add trivy vulnerability scanner to github workflow
 - Build a container as part of the github workflow
 - Push the container to Docker Hub registry
