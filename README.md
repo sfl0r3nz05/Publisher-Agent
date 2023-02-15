@@ -1,7 +1,7 @@
 # Publisher Agent
 
 The publisher agent is responsible for organizing the positioning data (raw data) received from a Synthetic Data Generator (see CSV-Data-Sender
-project) for a given identifier (e.g., tag) and sending it to the edge via AMQP.
+project) for a given identifier (e.g., tag) and sending it to the edge via AMQP or MQTT messaging technologies.
 
 >**Note:** At this moment the project is ad-hoc to send positioning data loaded in CSV, but in the To Do is to give guidelines to send any kind of data.
 
