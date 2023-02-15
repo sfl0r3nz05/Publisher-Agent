@@ -1,6 +1,9 @@
 # Publisher Agent
 
-The publisher agent is responsible for organizing the positioning data (raw data) received from a [SDG](https://github.com/sfl0r3nz05/CSV-Data-Sender) for a given identifier (e.g., tag) and sending it to the edge via AMQP.
+The publisher agent is responsible for organizing the positioning data (raw data) received from a Synthetic Data Generator (see CSV-Data-Sender
+project) for a given identifier (e.g., tag) and sending it to the edge via AMQP.
+
+>**Note:** At this moment the project is ad-hoc to send positioning data loaded in CSV, but in the To Do is to give guidelines to send any kind of data.
 
 ## Project status
 
@@ -16,6 +19,8 @@ In order to establish a connection with the rest of the components, they will ha
 ```bash
 docker network create syntheticnet
 ```
+
+## How to Receive any kind of data from SDG
 
 ## How to use
 
@@ -68,6 +73,8 @@ rmq0:
     - ALL
 ```
 
+- [Demostration Video for AMQP](./documentation/agent_AMQP.mp4)
+
 ## Test the publisher agent for mqtt
 
 For test purpose adding the next service to `docker-compose.yml` file.
@@ -86,9 +93,10 @@ mosquitto:
     - ./test/mosquitto.conf:/mosquitto/config/mosquitto.conf
 ```
 
+- [Demostration Video for MQTT](./documentation/agent_MQTT.mp4)
+
 ## To Do
 
-- Add a selector using environmental variables to select between different protocols [Step 2 - How to use](README.md#how-to-use)
 - Add trivy vulnerability scanner to github workflow
-- Build a container as part of the github workflow
-- Push the container to Docker Hub registry
+- Improve project documentation
+- Manage any kind of data
