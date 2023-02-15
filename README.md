@@ -26,6 +26,12 @@ docker network create syntheticnet
 
 1. Set the environment variables of the `docker-compose.yml` file depending on the messaging technology:
 
+    > *Note: PROTOCOL environmental variable allows to define the messaging technology type*
+
+    ```bash
+    PROTOCOL=AMQP
+    ```
+
     ```bash
     AMQP_QUEUE_HOST=rmq0
     ```
@@ -100,3 +106,4 @@ mosquitto:
 - Add trivy vulnerability scanner to github workflow
 - Improve project documentation
 - Manage any kind of data
+- Support other the messaging technologies like Kafka or HTTP 
