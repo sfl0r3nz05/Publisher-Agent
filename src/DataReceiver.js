@@ -1,12 +1,13 @@
 import dgram from "dgram";
 import client from 'prom-client'
 import DataGui from './models/DataGui.js';
-import { connect, sendMessage } from './DataSenderAMQP.js'
-import { connect, sendMessage } from './DataSenderMQTT.js'
+let importer
+if (process.env.PROTOCOL==='AMQP') {importer=await import("./DataSenderAMQP.js");}
+else if (process.env.PROTOCOL==='MQTT'){importer=await import("./DataSenderMQTT.js");}
 
 let s_port = 8053;
 const recieving_timeout = 250
-let channel = await connect();
+let channel = await importer.connect();
 let server = dgram.createSocket("udp4");
 
 let tags = []
@@ -35,16 +36,16 @@ server.on("message", async function (msg) {
   tags.some(function (item, index) { f = index; return item == data.tagID; })
   if (channel != null) {
     if (timeouts[f]) {
-      sendMessage(channel, data.tagID, data)
+      importer.sendMessage(channel, data.tagID, data)
       timeouts[f] = false
       timer(f)
     }
   }
   else {
-    channel = await connect();
+    channel = await importer.connect();
     console.log("channel " + channel);
     if (channel != null) {
-      sendMessage(channel, data.tagID, data)
+      importer.sendMessage(channel, data.tagID, data)
     }
   }
 });
