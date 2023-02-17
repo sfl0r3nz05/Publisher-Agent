@@ -94,7 +94,7 @@ rmq0:
     - ALL
 ```
 
-- [Demostration Video for AMQP](./documentation/agent_AMQP.mp4)
+- [Demostration Video for AMQP](https://youtu.be/OavGNGMnQZ4)
 
 ## Test the publisher agent for mqtt
 
@@ -114,7 +114,7 @@ mosquitto:
     - ./test/mosquitto.conf:/mosquitto/config/mosquitto.conf
 ```
 
-- [Demostration Video for MQTT](./documentation/agent_MQTT.mp4)
+- [Demostration Video for MQTT](https://youtu.be/k_vCP0BRygY)
 
 ## To Do
 
