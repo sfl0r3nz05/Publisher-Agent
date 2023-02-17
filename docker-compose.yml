@@ -13,8 +13,9 @@ services:
       context: .
     restart: always
     environment:
-      - PROTOCOL=AMQP # Must be set to AMQP or MQTT
+      - PROTOCOL=MQTT # Must be set to AMQP or MQTT
       - AMQP_QUEUE_HOST=rmq0
       - MQTT_QUEUE_HOST=mosquitto
+      - TOPIC=/5jggokgpepnvsb2uv4s40d59ov/tag001/attrs
     ports:
       - 8053:8053

@@ -1,5 +1,6 @@
 import mqtt from 'mqtt';
 const MQTT_QUEUE_HOST = process.env.MQTT_QUEUE_HOST;
+const MQTT_TOPIC = process.env.TOPIC;
 
 export async function connect() {
     try {
@@ -12,7 +13,7 @@ export async function connect() {
 }
 
 export function sendMessage(channel, topic, msg) {
-    var key = 'tracking.tags.'+topic;
+    var key = MQTT_TOPIC    //var key = 'tracking.tags.'+topic;
       
   channel.publish(key, Buffer.from(JSON.stringify(msg)));
     console.log(" [x] Sent %s:'%s'", key, msg);
