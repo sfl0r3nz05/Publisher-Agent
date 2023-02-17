@@ -11,6 +11,10 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
 
 ## Architecture
 
+- The publisher agent must be ready for use in any environment. E.g.:
+
+![Architecture2](https://user-images.githubusercontent.com/6643905/219712338-2d2899a2-cf67-4ab3-8e1d-d54ac80d0f0e.png)
+
 
 ## Requirements
 
