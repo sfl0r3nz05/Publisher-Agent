@@ -98,7 +98,7 @@ rmq0:
     - ALL
 ```
 
-- [Demostration Video for AMQP](https://youtu.be/OavGNGMnQZ4)
+- [Demonstration video of sending data from the SDG to an AMQP publisher agent](https://youtu.be/OavGNGMnQZ4)
 
 ## Test the publisher agent for mqtt
 
@@ -118,7 +118,8 @@ mosquitto:
     - ./test/mosquitto.conf:/mosquitto/config/mosquitto.conf
 ```
 
-- [Demostration Video for MQTT](https://youtu.be/k_vCP0BRygY)
+- [Demostration Video of sending data from the SDG to a MQTT publisher agent](https://youtu.be/k_vCP0BRygY)
+- [Video demonstration of sending data from the SDG to an information flow formed by the Publisher Agent MQTT and Fiware](https://youtu.be/lwRACg6GNws)
 
 ## To Do
 
