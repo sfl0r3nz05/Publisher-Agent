@@ -37,7 +37,7 @@ server.on("message", async function (msg) {
   tags.some(function (item, index) { f = index; return item == data.tagID; })
   if (channel != null) {
     if (timeouts[f]) {
-      importer.sendMessage(channel, data.tagID, data)
+      await importer.sendMessage(channel, data.tagID, data)
       timeouts[f] = false
       timer(f)
     }

@@ -23,5 +23,4 @@ export async function sendMessage(channel, topic, msg) {
   else{
     await channel.sendToQueue('low-priority', Buffer.from(JSON.stringify(msg)), { priority: 1 });
   }
-
 }

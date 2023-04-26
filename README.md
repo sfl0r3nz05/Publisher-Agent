@@ -13,8 +13,14 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
 
 - The publisher agent must be ready for use in any environment. E.g.:
 
-![Architecture2](https://user-images.githubusercontent.com/6643905/219717124-d5d2db80-e31b-42a9-854b-261e1c25ac43.png)
+  - Fiware-based environment:
 
+      ![Architecture1](https://user-images.githubusercontent.com/6643905/219717124-d5d2db80-e31b-42a9-854b-261e1c25ac43.png)
+
+
+  - RabbitMQ-based environment:
+
+      ![Architecture2](https://user-images.githubusercontent.com/6643905/234698918-11b62db0-a0b2-41b1-94be-99009d1e61d9.PNG)
 
 ## Requirements
 
