@@ -20,7 +20,7 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
 
   - RabbitMQ-based environment:
 
-      <img width="520" alt="ConsumerAgent" src="https://user-images.githubusercontent.com/6643905/234698918-11b62db0-a0b2-41b1-94be-99009d1e61d9.PNG">
+      <img width="480" alt="ConsumerAgent" src="https://user-images.githubusercontent.com/6643905/234698918-11b62db0-a0b2-41b1-94be-99009d1e61d9.PNG">
 
 ## Requirements
 
