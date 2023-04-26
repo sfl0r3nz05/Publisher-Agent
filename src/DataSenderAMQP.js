@@ -2,28 +2,26 @@ import amqp from 'amqplib';
 const AMQP_QUEUE_HOST = process.env.AMQP_QUEUE_HOST;
 
 export async function connect() {
-    try {
-    let conn = await amqp.connect(`amqp://${AMQP_QUEUE_HOST}`, "heartbeat=60")
-    let ch = await conn.createChannel()
-    return ch
-    } catch (error) {
-        return null
-    }
+  try {
+  const connection = await amqp.connect(`amqp://${AMQP_QUEUE_HOST}`, "heartbeat=60")
+  const channel = await connection.createChannel()
+  return channel
+  } catch (error) {
+      return null
+  }
 }
 
-export function sendMessage(channel, topic, msg) {
-    var exchange = 'tag_tracking';
-    var key = 'tracking.tags.'+topic;
-    var queue = 'tracking_queue';
+export async function sendMessage(channel, topic, msg) {
+  // create the queues with different priorities
+  await channel.assertQueue('high-priority', { arguments: { 'x-max-priority': 10 } });
+  await channel.assertQueue('low-priority', { arguments: { 'x-max-priority': 1 } });
 
-    channel.assertExchange(exchange, 'topic', {
-        durable: false
-    });
-    channel.assertQueue(queue, {
-        durable: true
-      });
-      channel.bindQueue(queue, exchange, 'tracking.tags.*');
-      
-  channel.publish(exchange, key, Buffer.from(JSON.stringify(msg)));
-    console.log(" [x] Sent %s:'%s'", key, msg);
+  // send messages to each queue with priority
+  if (msg["ID_mensaje"] == "108") {
+    await channel.sendToQueue('high-priority', Buffer.from(JSON.stringify(msg)), { priority: 10 });
+  }
+  else{
+    await channel.sendToQueue('low-priority', Buffer.from(JSON.stringify(msg)), { priority: 1 });
+  }
+
 }

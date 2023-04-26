@@ -10,5 +10,6 @@ class DataGui {
         this.vpl = vpl
         this.SingularMatrix = SingularMatrix
     }
+    
 }
 export default DataGui

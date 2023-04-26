@@ -117,7 +117,7 @@ mosquitto:
     - "1883:1883"
     - "9001:9001"
   volumes:
-    - ./test/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 ```
 
    ### Demonstration
