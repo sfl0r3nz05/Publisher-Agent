@@ -10,6 +10,7 @@ services:
     volumes:
       - ./src:/publisher-agent/src
     environment:
+      - SLEEP_TIME=10
       - PROTOCOL=MQTT # Must be set to AMQP or MQTT
       - AMQP_QUEUE_HOST=rmq0
       - MQTT_QUEUE_HOST=mosquitto

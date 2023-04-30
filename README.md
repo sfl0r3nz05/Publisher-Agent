@@ -45,6 +45,12 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
 
 1. Set the environment variables of the `docker-compose.yml` file depending on the messaging technology:
 
+    > *Note: SLLEP_TIME environmental variable defines the sending time between one packet and another*
+
+    ```bash
+    SLLEP_TIME=10
+    ```
+
     > *Note: PROTOCOL environmental variable allows to define the messaging technology type*
 
     ```bash
