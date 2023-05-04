@@ -7,7 +7,7 @@ if (process.env.PROTOCOL==='AMQP') {importer=await import("./DataSenderAMQP.js")
 else if (process.env.PROTOCOL==='MQTT'){importer=await import("./DataSenderMQTT.js");}
 
 let s_port = 8053;
-const recieving_timeout = 10
+const recieving_timeout = Number(process.env.SLEEP_TIME)
 let channel = await importer.connect();
 let server = dgram.createSocket("udp4");
 
