@@ -1,10 +1,9 @@
 import amqp from 'amqplib';
 const AMQP_QUEUE_HOST = process.env.AMQP_QUEUE_HOST;
-const AMQP_QUEUE_PORT = process.env.AMQP_QUEUE_PORT;
 
 export async function connect() {
   try {
-  const connection = await amqp.connect(`amqp://${AMQP_QUEUE_HOST}:${AMQP_QUEUE_PORT}`, "heartbeat=60")
+  const connection = await amqp.connect(`amqp://${AMQP_QUEUE_HOST}`, "heartbeat=60")
   const channel = await connection.createChannel()
   return channel
   } catch (error) {

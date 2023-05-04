@@ -1,11 +1,10 @@
 import mqtt from 'mqtt';
-const MQTT_TOPIC = process.env.TOPIC;
 const MQTT_QUEUE_HOST = process.env.MQTT_QUEUE_HOST;
-const MQTT_QUEUE_PORT = process.env.MQTT_QUEUE_PORT;
+const MQTT_TOPIC = process.env.TOPIC;
 
 export async function connect() {
     try {
-    const connectUrl = `mqtt://${MQTT_QUEUE_HOST}:${MQTT_QUEUE_PORT}`
+    const connectUrl = `mqtt://${MQTT_QUEUE_HOST}`
     const client = mqtt.connect(connectUrl)
     return client
     } catch (error) {
