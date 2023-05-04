@@ -1,7 +1,11 @@
-version: "3.8"
+version: "3.3"
+
+networks:
+   default:
+      external:
+         name: syntheticnet
 
 services:
-
   publisher-agent:
     container_name: publisher
     hostname: publisher
@@ -10,10 +14,11 @@ services:
     volumes:
       - ./src:/publisher-agent/src
     environment:
-      - SLEEP_TIME=10
-      - PROTOCOL=MQTT # Must be set to AMQP or MQTT
+      - PROTOCOL=AMQP # Must be set to AMQP or MQTT
       - AMQP_QUEUE_HOST=rmq0
+      - AMQP_QUEUE_PORT=5672
       - MQTT_QUEUE_HOST=mosquitto
+      - MQTT_QUEUE_PORT=1883
       - TOPIC=/5jggokgpepnvsb2uv4s40d59ov/tag001/attrs
     ports:
       - 8053:8053
