@@ -16,7 +16,9 @@ services:
     environment:
       - PROTOCOL=AMQP # Must be set to AMQP or MQTT
       - AMQP_QUEUE_HOST=rmq0
+      - AMQP_QUEUE_PORT=5672
       - MQTT_QUEUE_HOST=mosquitto
+      - MQTT_QUEUE_PORT=1883
       - TOPIC=/5jggokgpepnvsb2uv4s40d59ov/tag001/attrs
     ports:
       - 8053:8053
