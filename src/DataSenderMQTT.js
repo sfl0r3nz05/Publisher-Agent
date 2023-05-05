@@ -6,7 +6,16 @@ const MQTT_QUEUE_PORT = process.env.MQTT_QUEUE_PORT;
 export async function connect() {
     try {
     const connectUrl = `mqtt://${MQTT_QUEUE_HOST}:${MQTT_QUEUE_PORT}`
-    const client = mqtt.connect(connectUrl)
+
+    // MQTT options
+    const options = {
+        clientId: 'publisher-agent',
+        keepalive: 0,
+        clean: true,
+        reconnectPeriod: 0
+    };
+
+    const client = mqtt.connect(connectUrl, options)
     return client
     } catch (error) {
         return null

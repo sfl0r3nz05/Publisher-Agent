@@ -1,10 +1,5 @@
 version: "3.3"
 
-networks:
-   default:
-      external:
-         name: syntheticnet
-
 services:
   publisher-agent:
     container_name: publisher
