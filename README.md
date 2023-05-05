@@ -20,26 +20,40 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
 
   - RabbitMQ-based environment:
 
-      <img width="400" alt="ConsumerAgent" src="https://user-images.githubusercontent.com/6643905/234698918-11b62db0-a0b2-41b1-94be-99009d1e61d9.PNG">
+      <img width="500" alt="ConsumerAgent" src="https://user-images.githubusercontent.com/6643905/234698918-11b62db0-a0b2-41b1-94be-99009d1e61d9.PNG">
 
 ## Requirements
 
-- In order to establish a connection with the rest of the components, they will have to be in the same docker network as the publisher. The requirements are to have docker installed and a network called `syntheticnet` created on it, to install docker you can follow [this](https://docs.docker.com/engine/install/) guide, and to create a docker network run the following command:
+1. [Install docker]((https://docs.docker.com/engine/install/)).
+2. Enable same docker network as the publisher. E.g. a network called `syntheticnet`:
 
-  ```bash
-  docker network create syntheticnet
-  ```
+    ```bash
+    docker network create syntheticnet
+    ```
 
-- In case of using the agent to connect to an already existing network, it will be enough to modify the docker-compose file. E.g.:
+    - In case of using the agent to connect to an already existing network, it will be enough to modify the docker-compose file. E.g.:
 
-  ```console
-  networks:
-    default:
-        external:
-           name: syntheticnet
-  ```
+      ```console
+      networks:
+        default:
+            external:
+               name: syntheticnet
+      ```
 
-## How to Receive any kind of data from SDG
+3. Other option could be use `host` as `network_mode`. Sample of result:
+
+    ```console
+    services:
+      publisher-agent:
+        ...
+         - MQTT_QUEUE_PORT=1883
+          - TOPIC=/5jggokgpepnvsb2uv4s40d59ov/tag001/attrs
+        ports:
+          - 8053:8053
+        network_mode: "host"
+    ```
+
+## How to Receive data from SDG
 
 ## How to use
 
@@ -48,7 +62,7 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
     > *Note: SLLEP_TIME environmental variable defines the sending time between one packet and another*
 
     ```bash
-    SLLEP_TIME=10
+    SLEEP_TIME=10
     ```
 
     > *Note: PROTOCOL environmental variable allows to define the messaging technology type*
@@ -68,31 +82,21 @@ project) for a given identifier (e.g., tag) and sending it to the edge via AMQP 
     ```
 
     ```bash
+    AMQP_QUEUE_PORT=5672
+    ```
+
+    ```bash
     MQTT_QUEUE_HOST=mosquitto
     ```
 
-2. Comment on the DataSender library depending on the messaging technology:
-
     ```bash
-    nano ~/publisher_agent/src/DataReceiver.js
-    ```
-
-    - If use MQTT to comment the next line:
-
-    ```bash
-    import { connect, sendMessage } from './DataSenderAMQP.js'
-    ```
-
-    - If use AMQP to comment the next line:
-
-    ```bash
-    import { connect, sendMessage } from './DataSenderMQTT.js'
+    MQTT_QUEUE_PORT=1883
     ```
 
 3. To launch the program using docker simply place your terminal in the project folder and run the following command:
 
     ```bash
-    docker-compose up
+    docker-compose up -d
     ```
 
 ## Test the publisher agent for amqp
